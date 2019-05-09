@@ -3,7 +3,27 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    auth: {
+      apiKey: "AIzaSyAuIVmLZK1SszZD0q0Ki8Y8JqlvPcyH7U8",
+      authDomain: "home-sync-128.firebaseapp.com",
+      databaseURL: "https://home-sync-128.firebaseio.com",
+      projectId: "home-sync-128",
+      storageBucket: "home-sync-128.appspot.com",
+      messagingSenderId: "608130698932",
+      appId: "1:608130698932:web:93b8cacb2eddb963"
+    },
+    path: 'homeSynce',
+    event: {
+      name: 'events',
+      run: "run",
+      doc: {
+        action: 'action',
+        status: 'status'
+      }
+    }
+  }
 };
 
 /*

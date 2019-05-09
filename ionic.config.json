@@ -1,5 +1,7 @@
 {
   "name": "HomeManager",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
