@@ -84,4 +84,5 @@
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <engine name="android" spec="7.0.0" />
     <plugin name="cordova-plugin-ms-azure-mobile-apps" spec="^2.0.2" />
+    <plugin name="cordova-plugin-ms-adal" spec="^0.10.2" />
 </widget>
