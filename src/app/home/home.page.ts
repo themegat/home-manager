@@ -24,13 +24,15 @@ export class HomePage {
       if (this.runResponseCount <= 0) {
         this.runState = change.isRunning;
       }
-      this.runResponseCount++;
+      setTimeout(() => {
+        this.runResponseCount++;
+      }, 1000);
     });
   }
 
   toggleHomeSyncState() {
     console.log('Action - toggleHomeSyncState');
-    if (this.runResponseCount > 1) {
+    if (this.runResponseCount >= 1) {
       this.fireservice.runRequest(this.runState);
     }
   }
