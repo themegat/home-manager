@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="login">
+  <ion-grid class="vertical-center-grid">
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+      <ion-row align-items-start>
+        <ion-col size="10" offset="1">
+          <ion-item>
+            <ion-label position="floating">Email address</ion-label>
+            <ion-input name="email" ngModel #email="ngModel" required type="email" placeholder="Enter your email here">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="10" offset="1">
+          <ion-item>
+            <ion-label position="floating">Password</ion-label>
+            <ion-input name="password" ngModel #password="ngModel" required type="password"
+              placeholder="Enter your password here"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="10" offset="1">
+          <ion-item lines="none">
+            <ion-button type="submit" color="danger" expand="full" size="default" shape="round"
+              class="full-width-button" [disabled]="!email.valid || !password.valid || isLoading">
+              <ion-icon slot="end" name="key"></ion-icon>
+              Login
+            </ion-button>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-grid>
+</ion-content>
