@@ -1,0 +1,12 @@
+.login {
+    .vertical-center-grid {
+        height: 100%;
+        display: grid;
+        align-items: center !important;
+    }
+
+    .full-width-button {
+        width: 100% !important;
+        --box-shadow: none;
+    }
+}

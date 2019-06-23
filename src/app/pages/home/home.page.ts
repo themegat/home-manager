@@ -1,9 +1,8 @@
-import { FirebaseService } from './../services/firebase.service';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { FirebaseService } from '../../services/firebase.service';
 import { Component } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import * as moment from 'moment'
-import { environment } from 'src/environments/environment.prod';
-import { take } from 'rxjs/operators'
+import { auth } from 'firebase/app';
+import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'app-home',
@@ -12,16 +11,15 @@ import { take } from 'rxjs/operators'
 })
 export class HomePage {
   public title = "Home Manager";
-  private fireStoreInstance: AngularFirestoreCollection;
-  public runState;
+  public runState: boolean = false;
   public runStateResponse;
   private runResponseCount = 0;
 
-  public constructor(public firestore: AngularFirestore, public fireservice: FirebaseService) {
+  public constructor(public fireservice: FirebaseService, public firebaseAuth: AngularFireAuth) {
     fireservice.runResponse().subscribe(change => {
       console.log('TM value change', change);
       this.runStateResponse = change.isRunning;
-      if (this.runResponseCount <= 0) {
+      if (this.runResponseCount < 1) {
         this.runState = change.isRunning;
       }
       setTimeout(() => {
@@ -30,10 +28,11 @@ export class HomePage {
     });
   }
 
+
   toggleHomeSyncState() {
-    console.log('Action - toggleHomeSyncState');
+    var isRunning = this.runState ? true : false;
     if (this.runResponseCount >= 1) {
-      this.fireservice.runRequest(this.runState);
+      this.fireservice.runRequest(isRunning);
     }
   }
 }
