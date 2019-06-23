@@ -1,4 +1,3 @@
-import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { FirebaseService } from '../../services/firebase.service';
 import { Component } from '@angular/core';
@@ -16,7 +15,7 @@ export class HomePage {
   public runStateResponse;
   private runResponseCount = 0;
 
-  public constructor(public fireservice: FirebaseService, public firebaseAuth: AngularFireAuth, public googlePlus: GooglePlus) {
+  public constructor(public fireservice: FirebaseService, public firebaseAuth: AngularFireAuth) {
     fireservice.runResponse().subscribe(change => {
       console.log('TM value change', change);
       this.runStateResponse = change.isRunning;
