@@ -1,0 +1,50 @@
+# Android
+# Build your Android project with Gradle.
+# Add steps that test, sign, and distribute the APK, save build artifacts, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/android
+
+trigger:
+- master
+
+pool:
+  vmImage: 'macos-latest'
+
+steps:
+- task: Gradle@2
+  inputs:
+    workingDirectory: ''
+    gradleWrapperFile: 'gradlew'
+    gradleOptions: '-Xmx3072m'
+    publishJUnitResults: false
+    testResultsFiles: '**/TEST-*.xml'
+    tasks: 'assembleDebug'
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install -g ionic
+  displayName: 'install ionic globally'
+
+- script: |
+    npm install
+  displayName: 'npm install'
+
+- script: |
+    ionic cordova platform add android
+  displayName: 'add android platform'
+
+- script: |
+    ionic cordova prepare
+  displayName: 'prepare ionic cordova'
+
+- script: |
+    ionic cordova build android
+  displayName: 'build android'
+
+- script: |
+      cd platforms/android/app/build/outputs/apk/debug
+      dir
+  displayName: 'view android build content'
+
