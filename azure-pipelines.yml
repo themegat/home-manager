@@ -19,8 +19,8 @@ steps:
     npm install -g ionic
   displayName: 'install ionic globally'
 
-  - script: |
-    npm i -g cordova
+- script: |
+    npm install -g cordova
   displayName: 'install cordova globally'
 
 - script: |
