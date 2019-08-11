@@ -7,9 +7,15 @@ trigger:
 - master
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'macOS-latest'
 
 steps:
+- task: Gradle@2
+  inputs:
+    workingDirectory: ''
+    gradleOptions: '-Xmx3072m'
+    publishJUnitResults: false
+    tasks: 'assembleDebug'
 - task: NodeTool@0
   inputs:
     versionSpec: '10.x'
