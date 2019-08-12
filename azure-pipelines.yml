@@ -48,9 +48,10 @@ steps:
 - script: |
       cd platforms/android/app/build/outputs/apk/debug
       ls -la
-  displayName: 'view android build content'
+  displayName: 'check android build content'
 
 - task: CopyFiles@2
+  displayName: 'prepare artifacts for publishing'
   inputs:
     SourceFolder: '$(System.DefaultWorkingDirectory)'
     Contents: |
@@ -58,10 +59,11 @@ steps:
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
 - task: PublishBuildArtifacts@1 
+  displayName: 'publish artifacts'
 
-- script: |
-    az storage blob upload --container-name 'public' --file 'platforms/android/app/build/outputs/apk/debug/app-debug.apk' -n 'app-debug.apk' --connection-string 'BlobEndpoint=https://releasestore.blob.core.windows.net/?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-12-31T00:16:39Z&st=2019-08-12T16:16:39Z&spr=https&sig=diNRRlcHW4x43F9EPV20xHlvG%2FUv2bQnOjJPUcim8EQ%3D'
-  displayName: 'publish to azure storage'
+#- script: |
+#    az storage blob upload --container-name 'public' --file 'platforms/android/app/build/outputs/apk/debug/app-debug.apk' -n 'app-debug.apk' --connection-string 'BlobEndpoint=https://releasestore.blob.core.windows.net/?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-12-31T00:16:39Z&st=2019-08-12T16:16:39Z&spr=https&sig=diNRRlcHW4x43F9EPV20xHlvG%2FUv2bQnOjJPUcim8EQ%3D'
+#  displayName: 'publish to azure storage'
 
 - task: AppCenterDistribute@3
   displayName: 'publish to app center'
