@@ -69,10 +69,12 @@ steps:
   displayName: 'publish to app center'
   inputs:
     serverEndpoint: 'App center dist'
-    appSlug: 'Home Manager'
+    appSlug: 'tshepo.motsoeneng-palota.co.za/Home-Manager'
     appFile: 'platforms/android/app/build/outputs/apk/debug/app-debug.apk'
     symbolsOption: 'Android'
     releaseNotesOption: 'input'
     releaseNotesInput: 'Released from Az Devops'
     destinationType: 'groups'
-  
+
+
+
