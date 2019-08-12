@@ -9,3 +9,25 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+@import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
+
+.app-button {
+    --background: #C1BB3E;
+    --color: #fff;
+}
+
+.app-loading {
+    font-family: 'Pacifico', cursive;
+    font-size: large;
+    --spinner-color: #489CB7;
+
+    .loading-wrapper {
+        box-shadow: none;
+        background: transparent;
+        color: #489CB7;
+    }
+
+    ion-backdrop {
+        opacity: 0.2 !important;
+    }
+}

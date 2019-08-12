@@ -1,31 +1,39 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-title>login</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content class="login">
   <ion-grid class="vertical-center-grid">
     <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+      <ion-row>
+        <ion-col size="3"></ion-col>
+        <ion-col size="6">
+          <img src="../../../assets/icon.png" />
+        </ion-col>
+      </ion-row>
+      <br><br><br>
       <ion-row align-items-start>
         <ion-col size="10" offset="1">
-          <ion-item>
-            <ion-label position="floating">Email address</ion-label>
-            <ion-input name="email" ngModel #email="ngModel" required type="email" placeholder="Enter your email here">
+          <ion-label class="login-label">Email address</ion-label>
+          <ion-item lines="none">
+            <ion-input color="secondary" name="email" ngModel #email="ngModel" required type="email"
+              placeholder="Enter your email here" class="login-input">
             </ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="10" offset="1">
-          <ion-item>
-            <ion-label position="floating">Password</ion-label>
-            <ion-input name="password" ngModel #password="ngModel" required type="password"
+          <ion-label class="login-label">Password</ion-label>
+          <ion-item lines="none">
+            <ion-input name="password" ngModel #password="ngModel" required type="password" class="login-input"
               placeholder="Enter your password here"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="10" offset="1">
           <ion-item lines="none">
-            <ion-button type="submit" color="danger" expand="full" size="default" shape="round"
-              class="full-width-button" [disabled]="!email.valid || !password.valid || isLoading">
+            <ion-button type="submit" color="primary" expand="block" size="default" class="full-width-button app-button"
+              [disabled]="!email.valid || !password.valid || isLoading">
               <ion-icon slot="end" name="key"></ion-icon>
               Login
             </ion-button>

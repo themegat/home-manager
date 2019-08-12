@@ -9,4 +9,12 @@
         width: 100% !important;
         --box-shadow: none;
     }
+
+    .login-input {
+        --padding-start: 5%;
+    }
+
+    .login-label{
+        margin: 5%;
+    }
 }
