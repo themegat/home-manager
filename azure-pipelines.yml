@@ -68,10 +68,11 @@ steps:
 - task: AppCenterDistribute@3
   displayName: 'publish to app center'
   inputs:
-      serverEndpoint: 'App center dist'
-      appSlug: 'Home Manger'
-      appFile: 'platforms/android/app/build/outputs/apk/debug/app-debug.apk'
-      symbolsOption: 'Android'
-      releaseNotesOption: 'input'
-      destinationType: 'groups'
+    serverEndpoint: 'App center dist'
+    appSlug: 'Home Manager'
+    appFile: 'platforms/android/app/build/outputs/apk/debug/app-debug.apk'
+    symbolsOption: 'Android'
+    releaseNotesOption: 'input'
+    releaseNotesInput: 'Released from Az Devops'
+    destinationType: 'groups'
   
