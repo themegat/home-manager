@@ -10,7 +10,7 @@ import { async } from '@angular/core/testing';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  public title = "Home Manager";
+  public title = "Home";
   public runState: boolean = false;
   public runStateResponse;
   private runResponseCount = 0;
