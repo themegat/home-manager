@@ -19,12 +19,16 @@
 .app-loading {
     font-family: 'Pacifico', cursive;
     font-size: large;
-    --spinner-color: #489CB7;
+    --start: 0px;
+    --spinner-color: var(--ion-color-success);
 
     .loading-wrapper {
         box-shadow: none;
         background: transparent;
-        color: #489CB7;
+        color: var(--ion-color-success);
+        position: fixed;
+        top: 0 !important;
+        left: 50% !important;
     }
 
     ion-backdrop {

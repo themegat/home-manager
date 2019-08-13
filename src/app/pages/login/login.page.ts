@@ -11,31 +11,47 @@ import { LoadingController, ToastController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
   isLoading: boolean = false;
-  loading = null;
+  private loading = null;
+  isPasswordVisible = false;
 
   constructor(public auth: AuthService, public router: Router, public loadingCntrl: LoadingController,
     public toastCtrl: ToastController) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.presentLoading();
+    setTimeout(() => {
+      this.dismissLoading();
+      if (this.auth.isUserStillValid()) {
+        this.router.navigate(['home']);
+      }
+    }, 3000);
+  }
 
   login(form: NgForm) {
     this.isLoading = true;
     this.presentLoading();
-    this.auth.authenticateUser(form.value.email, form.value.password).then(user => {
-      console.log("TM user login: ", user);
-      this.isLoading = false;
-      this.dismissLoading();
-      this.router.navigate(['home']);
-    }).catch(error => {
-      this.dismissLoading();
-      this.isLoading = false;
-      this.presentToast(error.message ? error.message : "Could not login");
-      console.log("Login error: ", error);
-    });
+    //Timeout to allow presentLoading() to assign value to this.loading
+    setTimeout(() => {
+      this.auth.authenticateUser(form.value.email, form.value.password).then(user => {
+        console.log("TM user login: ", user);
+        this.isLoading = false;
+        this.dismissLoading();
+        this.router.navigate(['home']);
+      }).catch(error => {
+        this.dismissLoading();
+        this.isLoading = false;
+        this.presentToast(error.message ? error.message : "Could not login");
+        console.log("Login error: ", error);
+      });
+    }, 1000);
   }
 
   dismissLoading() {
-    this.loading.dismiss();
+    console.log("Loading: ", this.loading);
+
+    if (this.loading != null) {
+      this.loading.dismiss();
+    }
   }
 
   async presentLoading() {
@@ -53,8 +69,13 @@ export class LoginPage implements OnInit {
   async presentToast(message: string) {
     const toast = await this.toastCtrl.create({
       message: message,
-      duration: 5000
+      duration: 5000,
+      color: "primary"
     });
     toast.present();
+  }
+
+  togglePassword() {
+    this.isPasswordVisible = !this.isPasswordVisible;
   }
 }
