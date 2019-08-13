@@ -13,6 +13,7 @@ export class LoginPage implements OnInit {
   isLoading: boolean = false;
   private loading = null;
   isPasswordVisible = false;
+  password = "";
 
   constructor(public auth: AuthService, public router: Router, public loadingCntrl: LoadingController,
     public toastCtrl: ToastController) { }
@@ -34,6 +35,7 @@ export class LoginPage implements OnInit {
     setTimeout(() => {
       this.auth.authenticateUser(form.value.email, form.value.password).then(user => {
         console.log("TM user login: ", user);
+        this.password = "";
         this.isLoading = false;
         this.dismissLoading();
         this.router.navigate(['home']);
