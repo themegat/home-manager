@@ -14,13 +14,9 @@
       </ion-col>
       <ion-col size="1"></ion-col>
     </ion-row>
-    <ion-menu side="start" content-id="content">
-      <ion-content id="content">
-        <ion-list>
-          <ion-item>Sign out</ion-item>
-        </ion-list>
-      </ion-content>
-    </ion-menu>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -55,15 +51,30 @@
         <h4 class="home-header">States</h4>
       </ion-col>
     </ion-row>
-    <ion-row>
+    <!-- <ion-row>
       <ion-col size="1"></ion-col>
-      <ion-col size="4">
-        <div class=state>
+      <ion-col size="4"> -->
+    <ion-grid>
+      <ion-row class="state">
+        <ion-col size="1"></ion-col>
+        <ion-col size="3" class="vertical-align-center" style="height: 5em;">
+          <img [hidden]="!stateListener.isPatioDoorOpen" class="app-img" src="../../../assets/states/door_open.png" />
+          <img [hidden]="stateListener.isPatioDoorOpen" class="app-img" src="../../../assets/states/door_closed.png" />
+        </ion-col>
+        <ion-col size="7">
           <h6><u>Patio Door</u></h6>
-          <img src="../../../assets/states/door_open.png" />
-          <strong><label>Closed</label></strong>
-        </div>
-      </ion-col>
-    </ion-row>
+          <strong *ngIf="!stateListener.isPatioDoorOpen">
+            <ion-label color="success">Closed</ion-label>
+          </strong>
+          <strong *ngIf="stateListener.isPatioDoorOpen">
+            <ion-label color="dark">Opened</ion-label>
+          </strong>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <!-- <div class=state>
+        </div> -->
+    <!-- </ion-col>
+    </ion-row> -->
   </ion-grid>
 </ion-content>

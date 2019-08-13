@@ -14,6 +14,9 @@ export class HomePage {
   public runState: boolean = false;
   public runStateResponse;
   private runResponseCount = 0;
+  stateListener = {
+    isPatioDoorOpen: false
+  }
 
   public constructor(public fireservice: FirebaseService, public firebaseAuth: AngularFireAuth) {
     fireservice.runResponse().subscribe(change => {
@@ -26,8 +29,15 @@ export class HomePage {
         this.runResponseCount++;
       }, 1000);
     });
+    this.initListeners();
   }
 
+  initListeners() {
+    this.fireservice.listenerResponse().subscribe(change => {
+      console.log('TM listener value change', change);
+      this.stateListener.isPatioDoorOpen = change.isOpen;
+    })
+  }
 
   toggleHomeSyncState() {
     var isRunning = this.runState ? true : false;

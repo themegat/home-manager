@@ -1,8 +1,14 @@
 .state {
     background: #fff;
-    padding: 2% 15%;
-    border-radius: 5%;
-    text-align: center;
+    padding: 2%;
+    border-radius: 1em;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 80%, rgba(255, 255, 255, 0.7021183473389356) 100%);
+    clip-path: polygon(100% 0, 100% 70%, 90% 100%, 0 100%, 0 0);
+    // text-align: center;
+    .app-img {
+        height: 100%;
+    }
 }
 
 .home-header {
