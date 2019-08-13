@@ -15,12 +15,20 @@ export const environment = {
       appId: "1:608130698932:web:93b8cacb2eddb963"
     },
     path: 'homeSynce',
-    event: {
-      name: 'events',
-      run: "run",
-      doc: {
-        action: 'action',
-        status: 'status'
+    events: {
+      name: "events",
+      run: {
+        name: "run",
+        doc: {
+          action: 'action',
+          status: 'status'
+        }
+      },
+      listener: {
+        name: "listener",
+        doc: {
+          doorPatio: "doorPatio"
+        }
       }
     }
   }

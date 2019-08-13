@@ -22,7 +22,7 @@
           </ion-row>
           <ion-item lines="none">
             <ion-input name="email" ngModel #email="ngModel" required type="email" placeholder="Enter your email here"
-              class="login-input">
+              class="login-input app-ion-input ">
             </ion-input>
           </ion-item>
         </ion-col>
@@ -31,18 +31,18 @@
             <ion-col size="4">
               <ion-label class="login-label" color="dark">Password</ion-label>
             </ion-col>
-            <ion-col size="1" class="login-icon-col" (click)="togglePassword()">
+            <ion-col size="1" class="login-icon-col vertical-align-center" (click)="togglePassword()">
               <ion-icon *ngIf="!isPasswordVisible" name="eye" class="password-toggle-icon"></ion-icon>
               <ion-icon *ngIf="isPasswordVisible" name="eye-off" class="password-toggle-icon"></ion-icon>
             </ion-col>
-            <ion-col size="7" class="login-icon-col">
+            <ion-col size="7" class="login-icon-col vertical-align-center">
               <ion-text color="success" class="password-toggle-text">
                 <i (click)="togglePassword()">Show/Hide the password</i>
               </ion-text>
             </ion-col>
           </ion-row>
           <ion-item lines="none">
-            <ion-input name="password" ngModel #password="ngModel" required [type]="isPasswordVisible ? 'text' : 'password'" class="login-input"
+            <ion-input name="password" ngModel #password="ngModel" required [type]="isPasswordVisible ? 'text' : 'password'" class="login-input app-ion-input "
               placeholder="Enter your password here"></ion-input>
           </ion-item>
         </ion-col>

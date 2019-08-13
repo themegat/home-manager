@@ -23,6 +23,10 @@ export class AuthService {
     });
   }
 
+  // getUser(): User {
+  //   return this.currentUser;
+  // }
+
   authenticateUser(email: string, password: string): Promise<User> {
     return new Promise(async (resolve, reject) => {
       await this.firebaseAuth.auth.signInWithEmailAndPassword(email, password).then(result => {

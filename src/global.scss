@@ -11,6 +11,51 @@
 @import '~@ionic/angular/css/flex-utils.css';
 @import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
 
+ion-content {
+    background-image: url('./assets/background_up.png');
+    --background: transparent;
+    background-size: cover;
+    background-color: whitesmoke;
+}
+
+.toolbar-title {
+    display: flex !important;
+}
+
+ion-header {
+    border-bottom: solid 2px var(--ion-color-primary);
+
+    ion-toolbar {
+        .app-title {
+            display: flex;
+            text-align: end;
+
+            ion-label {
+                font-family: 'Pacifico', cursive;
+                align-self: center;
+                text-align: left;
+
+                ion-icon {
+                    font-size: larger;
+                }
+            }
+        }
+
+        img {
+            height: 50px;
+        }
+    }
+}
+
+ion-item {
+    background: transparent;
+    --background: none;
+}
+
+.app-ion-input {
+    --background: #fff;
+}
+
 .app-button {
     --background: #C1BB3E;
     --color: #fff;
@@ -34,4 +79,9 @@
     ion-backdrop {
         opacity: 0.2 !important;
     }
+}
+
+.vertical-align-center {
+    align-content: center !important;
+    display: grid !important;
 }
