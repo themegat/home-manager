@@ -9,7 +9,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "log-rel": "git log  --pretty=\"%h - %s (%an)\"  master..$BRANCH > release-notes.txt"
   },
   "private": true,
   "dependencies": {
