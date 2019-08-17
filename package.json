@@ -10,7 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "log-rel": "git log  --pretty=\"%h - %s (%an)\"  master..$BRANCH > release-notes.txt"
+    "log-release": "git log  --pretty=\"%h - %s (%an)\"  master..$arg1 > release-notes.txt"
   },
   "private": true,
   "dependencies": {
