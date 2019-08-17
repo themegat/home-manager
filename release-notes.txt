@@ -1,1 +1,2 @@
+6a825bb - Added release notes (themegat)
 7f34556 - Changed style properties for the menu image and state image (themegat)

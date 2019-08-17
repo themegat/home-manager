@@ -43,6 +43,7 @@ ion-header {
 
         img {
             height: 50px;
+            max-width: none !important;
         }
     }
 }
@@ -84,10 +85,4 @@ ion-item {
 .vertical-align-center {
     align-content: center !important;
     display: grid !important;
-}
-
-ion-menu {
-    img {
-        max-width: none !important;
-    }
 }

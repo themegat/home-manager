@@ -7,8 +7,7 @@ import {
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
-  { path: 'home', loadChildren: './pages/home/home.module#HomePageModule', canActivate: [AuthGuard] },
-  { path: 'menu', loadChildren: './pages/menu/menu.module#MenuPageModule' },
+  { path: 'home', loadChildren: './pages/home/home.module#HomePageModule', canActivate: [AuthGuard] }
 ];
 
 @NgModule({
