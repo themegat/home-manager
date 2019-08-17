@@ -18,7 +18,7 @@ export class HomePage {
   }
 
   public constructor(public fireservice: FirebaseService, public firebaseAuth: AngularFireAuth) {
-    // this.initListeners();
+    this.initListeners();
   }
 
   initListeners() {
