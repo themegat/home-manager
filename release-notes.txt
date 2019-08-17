@@ -1,0 +1,5 @@
+0e0b204 - Minor UI changes. Refactored side menu. (themegat)
+e4431dc - Refactored dev sripts (themegat)
+c3bdaf2 - Refactored menu. Created a menu component (themegat)
+6a825bb - Added release notes (themegat)
+7f34556 - Changed style properties for the menu image and state image (themegat)

@@ -1,3 +1,4 @@
+import { MenuComponent } from './components/menu/menu.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -15,8 +16,8 @@ import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestor
 import { environment } from 'src/environments/environment';
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [AppComponent, MenuComponent],
+  entryComponents: [MenuComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase.auth),
     AngularFirestoreModule,

@@ -1,0 +1,20 @@
+ion-card {
+    ion-card-header {
+        ion-icon {
+            font-size: x-large;
+        }
+
+        ion-card-title {
+            font-family: var(--font-pacifico);
+        }
+    }
+}
+
+ion-content {
+    .menu-item {
+        padding: 0 10%;
+        border-radius: 0.5em;
+        border: var(--ion-color-primary) solid 1px;
+        background: #fff;
+    }
+}

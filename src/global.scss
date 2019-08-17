@@ -31,18 +31,20 @@ ion-header {
             text-align: end;
 
             ion-label {
-                font-family: 'Pacifico', cursive;
+                font-family: var(--font-pacifico);
                 align-self: center;
                 text-align: left;
 
                 ion-icon {
-                    font-size: larger;
+                    font-size: x-large;
+                    margin: -5% 5%;
                 }
             }
         }
 
         img {
             height: 50px;
+            max-width: none !important;
         }
     }
 }
@@ -62,7 +64,7 @@ ion-item {
 }
 
 .app-loading {
-    font-family: 'Pacifico', cursive;
+    font-family: var(--font-pacifico);
     font-size: large;
     --start: 0px;
     --spinner-color: var(--ion-color-success);
