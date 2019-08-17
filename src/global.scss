@@ -85,3 +85,9 @@ ion-item {
     align-content: center !important;
     display: grid !important;
 }
+
+ion-menu {
+    img {
+        max-width: none !important;
+    }
+}
