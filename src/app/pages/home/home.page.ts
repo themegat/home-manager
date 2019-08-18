@@ -1,8 +1,6 @@
 import { AngularFireAuth } from '@angular/fire/auth';
 import { FirebaseService } from '../../services/firebase.service';
 import { Component } from '@angular/core';
-import { auth } from 'firebase/app';
-import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'app-home',
@@ -12,19 +10,25 @@ import { async } from '@angular/core/testing';
 export class HomePage {
   public title = "Home";
   public runState: boolean = false;
+  public toogleRunState: boolean = false;
   private lockFiresoreRequests: boolean = false;
   stateListener = {
-    isPatioDoorOpen: false
+    patioDoor: {
+      isOpen: false,
+      lastUpdate: ""
+    }
   }
 
-  public constructor(public fireservice: FirebaseService, public firebaseAuth: AngularFireAuth) {
+  public constructor(public fireservice: FirebaseService,
+    public firebaseAuth: AngularFireAuth
+  ) {
     this.initListeners();
   }
 
   initListeners() {
     this.fireservice.runResponse().subscribe(change => {
       console.log('TM value change', change);
-      this.runState = change.isRunning;
+      this.runState = this.toogleRunState = change.isRunning;
       this.lockFiresoreRequests = true;
       setTimeout(() => {
         this.lockFiresoreRequests = false;
@@ -32,15 +36,17 @@ export class HomePage {
     });
 
     this.fireservice.listenerResponse().subscribe(change => {
-      console.log('TM listener value change', change);
-      this.stateListener.isPatioDoorOpen = change.isOpen;
+      let lastUpdated: Date = new Date(change.lastUpdated);
+      console.log(`TM listener value change change.\n isOpen: ${change.isOpen}, 
+      lastUpdated: ${lastUpdated.toDateString()} ${lastUpdated.getHours()}:${lastUpdated.getMinutes()}`);
+      this.stateListener.patioDoor.isOpen = change.isOpen;
+      this.stateListener.patioDoor.lastUpdate = `${lastUpdated.toDateString()} ${lastUpdated.getHours()}:${lastUpdated.getMinutes()}`
     })
   }
 
   toggleHomeSyncState() {
-    var isRunning = this.runState ? true : false;
     if (!this.lockFiresoreRequests) {
-      this.fireservice.runRequest(isRunning);
+      this.fireservice.runRequest(this.toogleRunState);
     }
   }
 }
