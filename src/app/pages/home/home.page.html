@@ -36,7 +36,7 @@
         </ion-item>
       </ion-col>
       <ion-col size="2" class="vertical-align-center">
-        <ion-toggle [(ngModel)]="runState" (ionChange)="toggleHomeSyncState()" color="success"></ion-toggle>
+        <ion-toggle [(ngModel)]="toogleRunState" (ionChange)="toggleHomeSyncState()" color="success"></ion-toggle>
       </ion-col>
       <ion-col size="2" class="vertical-align-center">
         <ion-item lines="none">
@@ -58,15 +58,18 @@
       <ion-row class="state">
         <ion-col size="1"></ion-col>
         <ion-col size="3" class="vertical-align-center" style="height: 5em;">
-          <img [hidden]="!stateListener.isPatioDoorOpen" class="app-img" src="../../../assets/states/door_open.png" />
-          <img [hidden]="stateListener.isPatioDoorOpen" class="app-img" src="../../../assets/states/door_closed.png" />
+          <img [hidden]="!stateListener.patioDoor.isOpen" class="app-img" src="../../../assets/states/door_open.png" />
+          <img [hidden]="stateListener.patioDoor.isOpen" class="app-img" src="../../../assets/states/door_closed.png" />
         </ion-col>
-        <ion-col size="7">
+        <ion-col size="8">
           <h6><u>Patio Door</u></h6>
-          <strong *ngIf="!stateListener.isPatioDoorOpen">
+          <ion-label class="label-date"><strong>Updated:</strong>
+            {{ stateListener.patioDoor.lastUpdate}}</ion-label>
+          <br>
+          <strong *ngIf="!stateListener.patioDoor.isOpen">
             <ion-label color="success">Closed</ion-label>
           </strong>
-          <strong *ngIf="stateListener.isPatioDoorOpen">
+          <strong *ngIf="stateListener.patioDoor.isOpen">
             <ion-label color="dark">Opened</ion-label>
           </strong>
         </ion-col>

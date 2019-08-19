@@ -1,3 +1,6 @@
+042ed44 - Added update date to State (themegat)
+666517c - Modified app icon (themegat)
+1721cde - Final release 2 (themegat)
 d0c3269 - Final fix (themegat)
 36b8088 - Released fix/state-icon (themegat)
 0e0b204 - Minor UI changes. Refactored side menu. (themegat)
