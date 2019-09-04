@@ -38,9 +38,16 @@ function execute(command) {
 
 async function main() {
     try {
-        const passwdContent = await execute('git log  --pretty=\"%h - %s (%an)\"');
-
-        console.log(passwdContent);
+        var result = await execute('git log --pretty=format:"{\\"line\\":{\\"child-parent\\":\\"%p\\",\\"subject\\":\\"%s\\""}},');
+        result = JSON.parse("[" + result.substring(0, result.length - 1) + "]");
+        var element;
+        for (var i = 0; i < result.length; i++) {
+            element = result[i];
+            if ((element["line"]["child-parent"]).split(" ").length > 1) {
+                break;
+            }
+            console.log((element["line"]["subject"]))
+        }
     } catch (error) {
         console.error(error.toString());
     }
