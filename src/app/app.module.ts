@@ -15,13 +15,21 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 
+import { IonicStorageModule } from '@ionic/storage';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [AppComponent, MenuComponent],
   entryComponents: [MenuComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
+  imports: [
+    BrowserModule, IonicModule.forRoot(),
+    AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase.auth),
     AngularFirestoreModule,
-    AngularFireAuthModule],
+    AngularFireAuthModule,
+    IonicStorageModule.forRoot(),
+    HttpClientModule
+  ],
   providers: [
     StatusBar,
     SplashScreen,

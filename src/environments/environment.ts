@@ -12,7 +12,8 @@ export const environment = {
       projectId: "home-sync-128",
       storageBucket: "home-sync-128.appspot.com",
       messagingSenderId: "608130698932",
-      appId: "1:608130698932:web:93b8cacb2eddb963"
+      appId: "1:608130698932:web:93b8cacb2eddb963",
+      refreshTokenEndpoint: "https://securetoken.googleapis.com/v1/token"
     },
     path: 'homeSynce',
     events: {

@@ -1,8 +1,7 @@
+import { AuthService } from './../../services/auth.service';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { Component, OnInit } from '@angular/core';
-import { FirebaseAuth } from '@angular/fire';
 import { User } from 'src/app/model/user.model';
 
 @Component({
@@ -11,28 +10,23 @@ import { User } from 'src/app/model/user.model';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
-  currentUser: User = new User("", "", "", "", "", "");
+  currentUser: User = new User("", "", "", "", "", "", "");
 
-  constructor(private firebaseAuth: AngularFireAuth,
+  constructor(
     private router: Router,
-    private menuCtrl: MenuController) { }
+    private menuCtrl: MenuController,
+    private auth: AuthService, ) { }
 
-  ngOnInit() { 
-    this.initializeUser();
-  }
-
-  initializeUser() {
-    var me = this;
-    this.firebaseAuth.auth.onAuthStateChanged(function (user) {
-      if (user) {
-        me.currentUser = new User(user.uid, user.email, user.photoURL, user.displayName, user.refreshToken, user.metadata.lastSignInTime);
+  ngOnInit() {
+    this.auth.observableUser.subscribe(user => {
+      if (user && user != null) {
+        this.currentUser = user;
       }
-    });
+    })
   }
 
   signOut() {
-    console.log("Sigining out");
-    this.firebaseAuth.auth.signOut();
+    this.auth.signOut();
     this.menuCtrl.close();
     this.router.navigate(['login']);
   }

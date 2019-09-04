@@ -1,3 +1,4 @@
+import { CustomError } from './../../model/custom-error.model';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -19,11 +20,22 @@ export class LoginPage implements OnInit {
     public toastCtrl: ToastController) { }
 
   ngOnInit() {
+    this.autoLogin();
+  }
+
+  autoLogin() {
     this.presentLoading();
     setTimeout(() => {
       this.dismissLoading();
       if (this.auth.isUserStillValid()) {
         this.router.navigate(['home']);
+      } else {
+        this.auth.refreshUserToken().then(rs => {
+          console.log("TM RF OK: ", rs);
+          this.router.navigate(['home']);
+        }).catch(error => {
+          console.log(new CustomError(LoginPage.name, error, ""));
+        })
       }
     }, 3000);
   }
@@ -49,8 +61,6 @@ export class LoginPage implements OnInit {
   }
 
   dismissLoading() {
-    console.log("Loading: ", this.loading);
-
     if (this.loading != null) {
       this.loading.dismiss();
     }
