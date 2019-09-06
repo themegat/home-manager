@@ -10,7 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "log-release": "git log  --pretty=\"%h - %s (%an)\"  master..$arg1 > release-notes.txt"
+    "notes": "node tools/release-noter/index.js"
   },
   "private": true,
   "dependencies": {
